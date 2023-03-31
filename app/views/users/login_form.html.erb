@@ -1,0 +1,38 @@
+<header>
+    <div class="container">
+        <div class="logo-left">
+            <a href="/" > <img src="/images/logo.png" class="logo-image"> </a>
+        </div>
+    </div>
+</header>
+<% if flash[:notice] %>
+    <div class="flash">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+<div class="login-form">
+    <h1>ログイン</h1>
+    <div class="login_form_block_one"></div>
+    <div class="login_form_block_up">
+        <div class="login_form_block_up_left">
+            <%= form_tag("/users/login") do %>
+                <p>メールアドレス</p>
+                <input name="email" type="email" placeholder="info@sample.com" value="<%= @email %>">
+                <p>パスワード</p>
+                <input name="password" type="password" value="<%= @password %>">
+                <br>
+                <input class="contact_submit" type="submit" value="決定">
+            <% end %>
+        </div>
+        <div class="login_form_block_up_right">
+            <a href="/resister" class="inline-btn to_resister">新規登録の方はこちら</a>
+        </div>
+    </div>
+    <div class="login_form_block_down">
+        <div class="login_form_block_down_title">
+            <h2>ご注意</h2>
+        </div>
+        <ul>
+        </ul>
+    </div>
+</div>

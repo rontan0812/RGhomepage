@@ -1,0 +1,34 @@
+<header>
+    <div class="container">
+        <div class="logo-left">
+            <a href="/" > <img src="/images/logo.png" class="logo-image"> </a>
+        </div>
+    </div>
+</header>
+<% if flash[:notice] %>
+    <div class="flash">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+<div class="claim_form">
+    <h1>お問い合わせ</h1>
+    <div class="claim_form_up">
+        <%= form_tag("/claim/claim") do %>
+            <p>登録したメールアドレス</p>
+            <input name="email" type="email" value="<%= @claim_email %>">
+            <p>お問い合わせ内容（1600字以下）</p>
+            <textarea maxlength="1600" name="content"><%= @claim_content %></textarea>
+            <input class="contact_submit" type="submit" value="送信">
+        <% end %>
+    </div>
+    <div class="claim_form_down">
+        <div class="claim_form_down_title">
+            <h2>ご注意</h2>
+        </div>
+        <div class="claim_form_down_content">
+            <ul>
+                <li>同じ内容の連投やいたずら目的の投稿をした方はアカウントを使えなくすることがございます</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<header>
+    <div class="container">
+        <div class="logo-left">
+            <a href="/" > <img src="/images/logo.png" class="logo-image"> </a>
+        </div>
+    </div>
+</header>
+<% if flash[:notice] %>
+    <div class="flash">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+<div class="resi-form">
+    <h1>新規登録</h1>
+    <div class="resi_form_block_up">
+        <div class="resi_form_block_up_left">
+            <%= form_tag("/users/resister") do %>
+                <p>ユーザーネーム＊</p>
+                <input name="name" value="<%= @user.name %>">
+                <p>メールアドレス＊</p>
+                <input name="email" type="email" placeholder="info@sample.com" value="<%= @user.email%>">
+                <p>パスワード（8文字以上16文字以下）＊</p>
+                <input  name="password" type="password" minlength="8" maxlength="16" value="<%= @user.password %>">
+                <p>パスワード（確認用）＊</p>
+                <input name="check_password" type="password" value="<%= @user.check_password %>">
+                <br>
+                <input class="contact_submit" type="submit" value="登録">
+                
+                
+            <% end %>
+        </div>
+        <div class="resi_form_block_up_right">
+            <a href="/login" class="inline-btn to_login">ログインの方はこちら</a>
+            <% @user.errors.full_messages.each do |message| %>
+                <div class="error">
+                    <%= message %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div class="resi_form_block_down">
+        <div class="resi_form_block_down_title">
+            <h2>ご注意</h2>
+        </div>
+        <div class="resi_form_block_down_content">
+            <ul>
+                <li>一度登録したことのあるメールアドレスは登録できません</li>
+                <li>＊が書いてある部分は必須です</li>
+            </ul>
+        </div>
+    </div>
+</div>

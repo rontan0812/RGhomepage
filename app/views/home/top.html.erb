@@ -1,0 +1,41 @@
+<header>
+    <div class="container">
+        <div class="logo-left">
+            <a href="/" > <img src="/images/logo.png" class="logo-image"> </a>
+        </div>
+        <div class="logo-right">
+            <a href="/qaa" class="inline-btn logo-right-btn"> よくあるQ&A</a>
+            <a href="/claim" class="inline-btn logo-right-btn">ご意見ご要望はこちら</a>
+            <% if @current_user %>
+                <%= link_to("ログアウト","/users/logout", data: { "turbo-method": :post },class: "inline-btn logo-right-btn login-btn") %>
+            <% else %>
+                <a href="/login" class="inline-btn logo-right-btn login-btn">ログイン</a>
+            <% end %>
+            <p>
+                現在ログイン中のアカウント：
+                <% if @current_user %>
+                    <%= @current_user.name %>                
+                <% else %>
+                    ゲスト
+                <% end %>
+            </p>
+        </div>
+    </div>
+</header>
+<% if flash[:notice] %>
+    <div class="flash">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+<div class="container">
+    <div class="explain">
+        <h1>Welcome to my page  !</h1>
+        <h2>このサイトはRyujiが作ったゲームをまとめたサイトです</h2>
+        <p>アカウント登録することでゲームのデータを保存することができます</p>
+        <% if @current_user==nil %>
+            <a href="/resister" class="inline-btn resi">新規登録はこちら</a>
+        <% end %>
+        <br>
+        <a href="#" class="inline-btn start-play">さっそくプレイ！</a>
+    </div>
+</div>
